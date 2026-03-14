@@ -65,7 +65,7 @@ That's a keyword mismatch problem — your ads are reaching the wrong audience. 
 git clone https://github.com/sq5rix/amads.git
 cd amads
 pip install -r requirements.txt
-streamlit run app.py
+streamlit run app/app.py
 ```
 
 The app runs in **demo mode** by default — no Amazon credentials needed to explore the UI.
@@ -102,28 +102,29 @@ Get credentials at [advertising.amazon.com](https://advertising.amazon.com) → 
 ## Architecture
 
 ```
-app.py                    # Streamlit entry point + home
-pages/
-  1_📊_Dashboard.py       # KPI charts and demand map
-  2_📋_Campaigns.py       # Campaign management + CSV import
-  3_🔑_Keywords.py        # Keyword analysis + optimisation
-  4_🔍_Research.py        # Autocomplete, alphabet crawler, competitor scraper
-  5_🚀_Campaign_Builder.py  # AI clustering + campaign creation
-ads/
-  api.py                  # Amazon Ads API wrapper (falls back to mock)
-  mock_ads_api.py         # Realistic demo data
-analysis/
-  keyword_score.py        # Composite scoring + categorisation
-  keyword_cluster.py      # TF-IDF and semantic clustering
-  keyword_expansion.py    # Suffix/prefix/audience expansion
-scrapers/
-  amazon_autocomplete.py  # Autocomplete + alphabet crawler
-  amazon_search.py        # Competitor book discovery
-db/
-  database.py             # SQLite operations
-  schema.sql              # Table definitions
-config/
-  config.yaml             # Credentials + optimisation thresholds
+app/
+  app.py                    # Streamlit entry point + home
+  pages/
+    1_📊_Dashboard.py       # KPI charts and demand map
+    2_📋_Campaigns.py       # Campaign management + CSV import
+    3_🔑_Keywords.py        # Keyword analysis + optimisation
+    4_🔍_Research.py        # Autocomplete, alphabet crawler, competitor scraper
+    5_🚀_Campaign_Builder.py  # AI clustering + campaign creation
+  ads/
+    api.py                  # Amazon Ads API wrapper (falls back to mock)
+    mock_ads_api.py         # Realistic demo data
+  analysis/
+    keyword_score.py        # Composite scoring + categorisation
+    keyword_cluster.py      # TF-IDF and semantic clustering
+    keyword_expansion.py    # Suffix/prefix/audience expansion
+  scrapers/
+    amazon_autocomplete.py  # Autocomplete + alphabet crawler
+    amazon_search.py        # Competitor book discovery
+  db/
+    database.py             # SQLite operations
+    schema.sql              # Table definitions
+  config/
+    config.yaml             # Credentials + optimisation thresholds
 ```
 
 ---

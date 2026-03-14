@@ -8,11 +8,13 @@ This project builds a CLI toolkit and dashboard to automate Amazon Advertising (
 
 The project specification lives entirely in `plan.md`.
 
-## Planned Architecture
+## Architecture
+
+All Streamlit application code lives under `app/`. Run with `streamlit run app/app.py` from the project root.
 
 ```
-amazon-ads-cli/
-├─ bin/                  # Bash entry points
+app/
+├─ app.py                # Entry point
 │   ├─ ads-report        # Download search term reports from Amazon Ads API
 │   ├─ ads-keywords      # Extract and score keywords from reports → SQLite DB
 │   ├─ ads-campaign      # Create manual campaigns from keyword files
@@ -46,8 +48,8 @@ A Streamlit dashboard (`app.py`) is planned as a second deliverable with pages f
 ## Setup
 
 ```bash
-pip install amazon-ads-api pandas click sqlite-utils streamlit scikit-learn requests beautifulsoup4
-source lib/config.sh   # load API credentials into env
+python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 Credentials required in `lib/config.sh`:
@@ -67,7 +69,7 @@ bin/ads-campaign --campaign_name "Engineers" \
                  --keywords_file campaigns/engineers.txt \
                  --daily_budget 5                           # create manual campaign
 bin/ads-optimize                                           # pause (clicks≥20, sales=0); raise bid (sales≥2)
-streamlit run app.py                                       # launch dashboard
+streamlit run app/app.py                                       # launch dashboard
 ```
 
 ## Optimization Logic
