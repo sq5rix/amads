@@ -1,0 +1,23 @@
+# Amazon Ads API credentials
+# Get these from https://advertising.amazon.com → API access
+credentials:
+  client_id: ""
+  client_secret: ""
+  refresh_token: ""
+  profile_id: ""
+
+# Active marketplace
+marketplace: "US"
+
+# Optimization thresholds
+optimization:
+  pause_clicks_threshold: 20      # Pause keyword after this many clicks with no sale
+  bid_increase_sales_threshold: 2  # Increase bid after this many sales
+  bid_increase_percent: 20         # % to increase winning bid
+  ctr_low_threshold: 0.002        # 0.2% CTR — flag as low visibility
+  target_acos: 0.45               # 45% target ACoS
+
+# Autocomplete scraper settings
+scraper:
+  request_delay_seconds: 0.5
+  max_keywords_per_crawl: 500
